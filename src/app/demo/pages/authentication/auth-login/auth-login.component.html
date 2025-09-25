@@ -1,0 +1,65 @@
+<div class="auth-main">
+  <div class="auth-wrapper v3">
+    <div class="auth-form">
+      <div class="auth-header">
+        <!-- <a href="javascript:"><img src="assets/images/logo-dark.svg" alt="logo" /></a> -->
+      </div>
+      <div class="card my-5">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-end mb-4">
+            <h3 class="mb-0"><b>Login</b></h3>
+            <!-- <a [routerLink]="['/register']" class="link-primary">Don't have an account?</a> -->
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label" for="email">Username</label>
+            <input type="text" class="form-control" id="email" placeholder="Username" [(ngModel)]="userId" />
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password" />
+          </div>
+          <div class="d-flex mt-1 justify-content-between">
+            <div class="form-check">
+              <!-- <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="" /> -->
+              <!-- <label class="form-check-label text-muted" for="customCheckc1">Keep me sign in</label> -->
+            </div>
+            <!-- <h5 class="text-secondary f-w-400"><a href="javascript:">Forgot Password?</a></h5> -->
+          </div>
+          <div class="d-grid mt-4">
+            <button type="button" class="btn" style="background-color:#fd8e48; border-color:#fd8e48; color:#fff;"
+              (click)="onLogin()">
+              Login</button>
+          </div>
+        </div>
+      </div>
+      <div class="auth-footer row bg-footer py-2">
+
+        <div class="footer-wrapper container-fluid">
+          <div class="row">
+            <div class="col my-1  d-flex align-items-center"
+              [ngClass]="{'justify-content-between' : showBrand , 'justify-content-end' : !showBrand}">
+              <div>
+                <p class="m-0">
+                  Copyright &copy;
+                  <a [ngClass]="{'d-none' :!showBrand}" href="" target="_blank">CCPL</a>
+                </p>
+
+                <div class="col-auto my-1" [ngClass]="{'d-none' :!showBrand}">
+                  <ul class="list-inline footer-link mb-0">
+                    <li class="list-inline-item"><a href="" target="_blank">Home</a></li>
+                    <li class="list-inline-item">
+                      <a href="" target="_blank">Privacy Policy</a>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+              <img src="assets/images/logo_with_name.svg" alt="logo" width="130">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

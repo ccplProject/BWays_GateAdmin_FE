@@ -1,0 +1,46 @@
+<app-navigation class="pc-sidebar" [ngClass]="{
+    'navbar-collapsed': navCollapsed,
+    'mob-open': navCollapsedMob
+  }" (NavCollapse)="this.navCollapsed = !this.navCollapsed" />
+<app-nav-bar (NavCollapsedMob)="navMobClick()" (NavCollapse)="this.navCollapsed = !this.navCollapsed" />
+<div class="pc-container">
+  <div class="coded-wrapper">
+    <div class="coded-content">
+      <div class="coded-inner-content">
+        <app-breadcrumb />
+        <div class="main-body">
+          <div class="page-wrapper">
+            <router-outlet />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pc-menu-overlay" (click)="closeMenu()" (keydown)="handleKeyDown($event)" tabindex="0"></div>
+</div>
+<footer class="pc-footer bg-footer p-0 py-2">
+  <div class="footer-wrapper container-fluid">
+    <div class="row m-0">
+      <div class="col my-1  d-flex align-items-center"
+        [ngClass]="{'justify-content-between' : showBrand , 'justify-content-end' : !showBrand}">
+        <div>
+          <p class="m-0">
+            Copyright &copy;
+            <a [ngClass]="{'d-none' :!showBrand}" href="" target="_blank">CCPL</a>
+          </p>
+
+          <div class="col-auto my-1" [ngClass]="{'d-none' :!showBrand}">
+            <ul class="list-inline footer-link mb-0">
+              <li class="list-inline-item"><a href="/" target="_blank">Home</a></li>
+              <li class="list-inline-item">
+                <a href="" target="_blank">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <img src="assets/images/logo_with_name.svg" alt="MediVora" width="130">
+      </div>
+    </div>
+  </div>
+</footer>

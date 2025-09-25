@@ -1,0 +1,54 @@
+/* Make ng-select look like Bootstrap input */
+.custom-ng-select {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  /* match Bootstrap input padding */
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  min-height: 38px;
+}
+
+/* Focus effect */
+/* Make ng-select look like Bootstrap input */
+.custom-ng-select {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  min-height: 38px;
+}
+
+/* Focus effect */
+.custom-ng-select.ng-select-focused {
+  border-color: #2575fc !important;
+  box-shadow: 0 0 6px rgba(37, 117, 252, 0.4);
+}
+
+/* Placeholder color */
+.custom-ng-select ::ng-deep .ng-placeholder {
+  color: #6c757d;
+}
+
+/* Align dropdown arrow like Bootstrap input */
+.custom-ng-select ::ng-deep .ng-select-container {
+  height: 38px;
+  align-items: center;
+  padding-right: 0.75rem;
+}
+
+.custom-ng-select ::ng-deep .ng-arrow-wrapper {
+  top: 50%;
+  transform: translateY(-50%);
+}
