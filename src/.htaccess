@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /Opd_Projet_Amruta/medivora/
+  RewriteBase /bwaysget/
 
   # Don’t rewrite existing files or directories
   RewriteCond %{REQUEST_FILENAME} -f [OR]

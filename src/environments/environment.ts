@@ -11,8 +11,9 @@ export const environment = {
   /*******************************************************/
   appName: "BWaysGet",
   showBrand: true,
-  baseUrl: "",
+  baseUrl: "http://localhost:5001/",
   token: "token",
+  key: "key",
   userData: "userData"
 };
 

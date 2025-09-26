@@ -26,10 +26,6 @@ const routes: Routes = [
         path: 'dashboard',
         loadComponent: () => import('./demo/dashboard/default/default.component').then((c) => c.DefaultComponent)
       },
-      {
-        path: 'register',
-        loadComponent: () => import('./demo/pages/authentication/auth-register/auth-register.component').then((c) => c.AuthRegisterComponent)
-      },
     ]
   },
   {

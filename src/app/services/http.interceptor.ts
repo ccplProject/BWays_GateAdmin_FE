@@ -36,7 +36,7 @@ export class HttpInterceptorService implements HttpInterceptor {
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error('Error intercepted:', error);
-
+        debugger
         if (error.status === 401) {
           console.error('Unauthorized - Redirecting to login');
           if (req.url.includes('login')) {
@@ -57,7 +57,7 @@ export class HttpInterceptorService implements HttpInterceptor {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'An unexpected error occurred.',
+            text: error?.error?.message || 'An unexpected error occurred.',
           });
         }
 

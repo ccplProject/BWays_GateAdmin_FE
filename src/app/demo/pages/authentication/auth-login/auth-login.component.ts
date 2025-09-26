@@ -17,8 +17,8 @@ import Swal from 'sweetalert2';
 })
 export class AuthLoginComponent {
 
-  userId: string = "";
-  password: string = "";
+  userId: string = "shubhamsawant.workplace@gmail.com";
+  password: string = "123456789";
   showBrand: boolean = environment.showBrand;
   constructor(
     private apiService: ApiService,
@@ -30,11 +30,13 @@ export class AuthLoginComponent {
   onLogin() {
     if (this.userId && this.password) {
       this.apiService.login({
-        USER_ID: this.userId,
+        MAIL: this.userId,
         PASSWORD: this.password
       }).subscribe({
         next: (res: any) => {
+          debugger
           localStorage.setItem(environment.token, res.token);
+          localStorage.setItem(environment.key, res.user?.COMPANY_CODE?.UNIQUE_TOKEN);
           localStorage.setItem(environment.userData, JSON.stringify(res.user));
           this.router.navigate(['/dashboard']);
         },

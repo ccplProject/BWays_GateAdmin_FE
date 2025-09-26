@@ -61,3 +61,33 @@ File: style.css
 .bg-footer {
     background-color: rgb(219, 215, 215) !important;
 }
+
+// 🌸 Soft Pink → Blue
+body,
+.bg-body {
+    // background: linear-gradient(254deg, #fff5f7, #f0f9ff, #f5f3ff);
+}
+
+// 🌿 Mint Green → Sky Blue
+body,
+.bg-body {
+    // background: linear-gradient(254deg, #f0fdf4, #ecfdf5, #f0f9ff);
+}
+
+// ☀️ Warm Sand → Peach
+body,
+.bg-body {
+    background: linear-gradient(254deg, #fffbeb, #fff7ed, #fff1f2);
+}
+
+// 📘 Cool Gray → Indigo
+body,
+.bg-body {
+    // background: linear-gradient(254deg, #f9fafb, #eef2ff, #eff6ff);
+}
+
+// 🌼 Cream → Light Gold
+body,
+.bg-body {
+    // background: linear-gradient(254deg, #fffbeb, #fefce8, #fef9c3);
+}

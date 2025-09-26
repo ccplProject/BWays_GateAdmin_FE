@@ -18,36 +18,5 @@
     </app-card>
   </div>
   }
-
-
-  <div class="col-12">
-    <h5 class="mb-3">Recent Patient</h5>
-    <div class="card tbl-card">
-      <div class="table-responsive">
-        <table class="table table-hover mb-0">
-          <thead>
-            <tr>
-              <th>TRACKING NO.</th>
-              <th>Date</th>
-              <th>Patient Name</th>
-              <th class="text-end">Added By</th>
-              <th class="text-end">Added Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (order of recentOrder; track order) {
-            <tr>
-              <td>{{order?.TRAN_NO}} </td>
-              <td>{{order?.TRAN_DATE}} </td>
-              <td>{{ order.PAT_NAME }}</td>
-              <td class="text-end">{{ order.SYS_ADDUSER }}</td>
-              <td class="text-end">{{ order.SYS_ADDTIME }}</td>
-            </tr>
-            }
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
   <!-- [ sample-page ] end -->
 </div>
