@@ -16,4 +16,8 @@ export class ApiService {
   login(data: any): Observable<any> {
     return this.http.post(this.baseUrl + "api/admin-login", data);
   }
+  getList(data: any): Observable<any> {
+    return this.http.post(this.baseUrl + "api/getList", data);
+  }
+
 }

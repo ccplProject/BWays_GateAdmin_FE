@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-admin',
-  imports: [CommonModule, BreadcrumbComponent, NavigationComponent, NavBarComponent, RouterModule],
+  imports: [CommonModule, /*BreadcrumbComponent,*/ NavigationComponent, NavBarComponent, RouterModule],
   templateUrl: './admin-layout.component.html',
   styleUrls: ['./admin-layout.component.scss']
 })

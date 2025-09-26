@@ -20,20 +20,36 @@ export interface NavigationItem {
 
 export const NavigationItems: NavigationItem[] = [
   {
-    id: 'dashboard',
-    title: 'Dashboard',
+    id: '',
+    title: '',
     type: 'group',
     icon: 'icon-navigation',
     children: [
       {
-        id: 'default',
-        title: 'Default',
+        id: 'dashboard',
+        title: 'Dashboard',
         type: 'item',
         classes: 'nav-item',
         url: '/dashboard',
         icon: 'dashboard',
-        breadcrumbs: false
-      }
+      },
+      {
+        id: 'system',
+        title: 'System',
+        type: 'collapse',
+        classes: 'nav-item',
+        icon: 'dashboard',
+        children: [
+          {
+            id: 'emp',
+            title: 'Employee',
+            type: 'item',
+            classes: 'nav-item',
+            url: '/pages/employee',
+            icon: 'dashboard'
+          },
+        ]
+      },
     ]
   },
 ];

@@ -17,14 +17,23 @@ const routes: Routes = [
       //   redirectTo: '/dashboard/default',
       //   pathMatch: 'full'
       // },
+      // {
+      //   path: '',
+      //   redirectTo: '/login',
+      //   pathMatch: 'full'
+      // },
       {
         path: '',
-        redirectTo: '/login',
+        redirectTo: '/dashboard',
         pathMatch: 'full'
       },
       {
         path: 'dashboard',
         loadComponent: () => import('./demo/dashboard/default/default.component').then((c) => c.DefaultComponent)
+      },
+      {
+        path: 'pages',
+        loadChildren: () => import('./pages/pages-module').then((c) => c.PagesModule)
       },
     ]
   },

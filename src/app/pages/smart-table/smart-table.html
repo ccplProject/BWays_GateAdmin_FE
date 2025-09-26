@@ -1,0 +1,36 @@
+<!-- <p>smart-table works!</p> -->
+<div class="row">
+  <div class="col-12 d-flex flex-wrap justify-content-start gap-2">
+    <button type="button"
+      class="btn btn-outline-primary rounded-2 btn-sm px-2 py-1 shadow-sm d-flex align-items-center justify-content-center gap-2 "
+      style="min-width: 100px;" (click)="onAdd()">
+      <i class="bi bi-plus-circle fs-5"></i>
+      <span class="fw-semibold">Add</span>
+    </button>
+    <button type="button"
+      class="btn btn-outline-primary rounded-2 btn-sm px-2 py-1 shadow-sm d-flex align-items-center justify-content-center gap-2 "
+      style="min-width: 100px;" (click)="onEdit()">
+      <i class="bi bi-pencil-square"></i>
+      <span class="fw-semibold">Edit</span>
+    </button>
+    <button type="button"
+      class="btn btn-outline-primary rounded-2 btn-sm px-2 py-1 shadow-sm d-flex align-items-center justify-content-center gap-2 "
+      style="min-width: 100px;" (click)="onView()">
+      <i class="bi bi-eye"></i>
+      <span class="fw-semibold">View</span>
+    </button>
+    <button type="button"
+      class="btn btn-outline-primary rounded-2 btn-sm px-2 py-1 shadow-sm d-flex align-items-center justify-content-center gap-2 "
+      style="min-width: 100px;" (click)="onDelete()">
+      <i class="bi bi-trash"></i>
+      <span class="fw-semibold">Delete</span>
+    </button>
+  </div>
+</div>
+<div class="row mt-2">
+  <div class="col col-12">
+    <smart-grid style="height: 70vh;" class="w-100 outer-table-height" [behavior]="behavior" [header]="header"
+      [appearance]="appearance" [dataSource]="gridDataSource" [columns]="gridColumns" [sorting]="sorting"
+      [selection]="selection" [filtering]="filtering" #grid id="grid"></smart-grid>
+  </div>
+</div>

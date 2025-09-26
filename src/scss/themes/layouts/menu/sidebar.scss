@@ -47,6 +47,7 @@
   .user-profile-section {
     padding: 10px 24px;
     border-top: 2px solid rgb(240, 240, 240);
+
     .dropdown-toggle::after {
       display: none;
     }
@@ -78,15 +79,15 @@
     height: 100%;
     transition: all 0.3s ease-in-out;
 
-    ~ app-nav-bar .pc-header {
+    ~app-nav-bar .pc-header {
       left: 0px;
     }
 
-    ~ .pc-footer {
+    ~.pc-footer {
       margin-left: 20px;
     }
 
-    ~ .pc-container {
+    ~.pc-container {
       margin-left: 0px;
     }
 
@@ -96,6 +97,7 @@
       }
     }
   }
+
   .navbar-content {
     // position: relative;
     // height: calc(100vh - 60px);
@@ -104,7 +106,7 @@
     .coded-inner-navbar {
       flex-direction: column;
 
-      app-nav-item > li.active:after {
+      app-nav-item>li.active:after {
         top: 0 !important;
         height: 100% !important;
       }
@@ -114,12 +116,26 @@
           position: relative;
           padding-bottom: 2px;
 
-          > a {
+          // >a {
+          //   &:after {
+          //     content: '\e844';
+          //     font-family: 'feather';
+          //     font-size: 15px;
+          //     border: none;
+          //     position: absolute;
+          //     top: 11px;
+          //     right: 20px;
+          //     transition: 0.3s ease-in-out;
+          //   }
+          // }
+          >a {
             &:after {
-              content: '\e844';
-              font-family: 'feather';
+              content: "\f078";
+              /* Font Awesome down arrow */
+              font-family: "Font Awesome 6 Free";
+              font-weight: 900;
+              /* Required for solid icons */
               font-size: 15px;
-              border: none;
               position: absolute;
               top: 11px;
               right: 20px;
@@ -139,8 +155,8 @@
             position: absolute;
             display: block;
 
-            > app-nav-item li {
-              > a {
+            >app-nav-item li {
+              >a {
                 text-align: left;
                 padding: 12px 30px 12px 55px;
                 margin: 0;
@@ -157,16 +173,17 @@
               }
             }
 
-            > app-nav-collapse li {
-              > a {
+            >app-nav-collapse li {
+              >a {
                 text-align: left;
                 padding: 12px 30px 12px 55px;
                 margin: 0;
                 display: block;
               }
-              .coded-submenu > {
+
+              .coded-submenu> {
                 app-nav-item li {
-                  > a {
+                  >a {
                     padding: 12px 30px 12px 75px;
                   }
                 }
@@ -175,13 +192,13 @@
           }
 
           &.coded-trigger {
-            > a {
+            >a {
               &:after {
-                transform: rotate(90deg);
+                transform: rotate(180deg);
               }
             }
 
-            > .coded-submenu {
+            >.coded-submenu {
               position: relative;
               opacity: 1;
               visibility: visible;
@@ -203,7 +220,7 @@
           }
         }
 
-        > a {
+        >a {
           padding: 12px 16px 12px 28px;
           display: flex;
           align-items: center;
@@ -214,7 +231,7 @@
             position: relative;
           }
 
-          > .coded-micon {
+          >.coded-micon {
             font-size: 16px;
             margin-right: 8px;
             height: 16px;
@@ -225,7 +242,7 @@
               display: flex;
             }
 
-            + .coded-mtext {
+            +.coded-mtext {
               position: relative;
               vertical-align: middle;
               text-align: center;
@@ -236,17 +253,18 @@
 
       app-nav-item {
         li {
-          > a {
-            > .coded-micon {
+          >a {
+            >.coded-micon {
               margin-right: 12px;
             }
           }
         }
       }
 
-      > app-nav-group > app-nav-item {
+      >app-nav-group>app-nav-item {
         li {
           position: relative;
+
           &:before {
             content: '';
             position: absolute;
@@ -283,20 +301,25 @@
 @media (min-width: 1025px) {
   .pc-sidebar {
     transition: width 0.15s ease;
-    ~ .pc-header {
+
+    ~.pc-header {
       transition: left 0.15s ease;
     }
-    ~ .pc-footer,
-    ~ .pc-container {
+
+    ~.pc-footer,
+    ~.pc-container {
       transition: margin-left 0.15s ease;
     }
+
     &.pc-sidebar-hide {
       width: 0;
-      ~ .pc-header {
+
+      ~.pc-header {
         left: 0;
       }
-      ~ .pc-footer,
-      ~ .pc-container {
+
+      ~.pc-footer,
+      ~.pc-container {
         margin-left: 0px;
       }
     }
@@ -307,6 +330,7 @@
   .pc-header .pc-h-item.pc-sidebar-collapse {
     display: none;
   }
+
   .pc-sidebar {
     left: -#{$sidebar-width};
     box-shadow: none;
@@ -322,7 +346,7 @@
         background: inherit;
       }
 
-      ~ .pc-container {
+      ~.pc-container {
         .pc-menu-overlay {
           position: fixed;
           top: 0;
