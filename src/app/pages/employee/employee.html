@@ -1,1 +1,90 @@
-<p>employee works!</p>
+<div class="container mt-3 pb-3">
+  <div class="row m-0 mb-3">
+    <div class="col text-center">
+      <h4 class="fw-bold text-primary">Employee</h4>
+      <hr />
+    </div>
+  </div>
+
+  <form [formGroup]="userForm" class="container form-height card py-4">
+
+    <div class="row m-0">
+      <div class="col col-12 col-md-6 mt-1 ">
+        <label class="col-4 fw-bold">Name</label>
+        <input type="text" class="form-control form-control-sm" formControlName="NAME" placeholder="Enter name" />
+      </div>
+
+      <div class="col col-12 col-md-6 mt-1 ">
+        <label class="col-4 fw-bold">Sex</label>
+        <ng-select [items]="dsSex" bindLabel="NAME" bindValue="CODE" formControlName="SEX" class="w-100"></ng-select>
+      </div>
+    </div>
+
+    <div class="row m-0">
+      <div class="col col-12 col-md-6 mt-1 ">
+        <label class="col-4 mt-2 fw-bold">Short Name</label>
+        <input type="text" class="form-control form-control-sm" formControlName="SHORT_NAME"
+          placeholder="Enter short name" (focusout)="setUserId()" />
+      </div>
+    </div>
+    <hr>
+    <div class="row m-0">
+      <div class="col col-12 col-md-6 mt-1 ">
+        <label class="col-4 mt-2 fw-bold">Mobile</label>
+        <input type="text" class="form-control form-control-sm" formControlName="MOBILE"
+          placeholder="Enter mobile no." />
+      </div>
+
+      <div class="col col-12 col-md-6 mt-1 ">
+        <label class="col-4 mt-2 fw-bold">Email</label>
+        <input type="email" class="form-control form-control-sm" formControlName="EMAIL" placeholder="Enter email" />
+      </div>
+    </div>
+    <div class="row m-0">
+      <div class="col col-12 col-md-6 mt-1 ">
+        <label class="col-4 mt-2 fw-bold">Address 1</label>
+        <input type="text" class="form-control form-control-sm" formControlName="ADDRESS1"
+          placeholder="Enter address line 1" />
+      </div>
+
+      <div class="col col-12 col-md-6 mt-1 ">
+        <label class="col-4 mt-2 fw-bold">Address 2</label>
+        <input type="text" class="form-control form-control-sm" formControlName="ADDRESS2"
+          placeholder="Enter address line 2" />
+      </div>
+    </div>
+    <hr>
+    <div class="row m-0">
+      <div class="col col-12 col-md-6 mt-1 ">
+        <label class="col-4 mt-2 fw-bold">User ID (<small class="text-success">Auto Generated</small>)</label>
+        <input type="text" class="form-control form-control-sm" formControlName="USER_ID" placeholder="Enter user ID"
+          [readonly]="true" />
+      </div>
+      <div class="col col-12 col-md-6 mt-1  position-relative">
+        <label class="col-4 mt-2 fw-bold">Password</label>
+
+        <input [type]="showPassword ? 'text' : 'password'" class="form-control form-control-sm"
+          formControlName="PASSWORD" placeholder="Enter password" />
+
+        <!-- 👁 Toggle Icon -->
+        <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'" (click)="togglePassword()"
+          style="position: absolute; right: 1.5rem; cursor: pointer;"
+          [ngStyle]="{ top: queryParams.params.STATUS == 'ADD' ? '58%' :'43%'  }"></i>
+
+        <small class="text-danger" [ngClass]="{'d-none' : queryParams.params.STATUS == 'ADD'}">Leave blank if you don’t
+          want to update the password.</small>
+      </div>
+
+    </div>
+
+
+  </form>
+
+  <div class="row m-0 mt-3">
+    <div class="col text-center">
+      <button *ngIf="queryParams.params.STATUS == 'ADD' || queryParams.params.STATUS == 'EDI'" type="button"
+        class="btn btn-primary px-4" (click)="onSubmit()">Submit</button>
+      <button type="button" class="btn btn-secondary px-4 ms-2" (click)="onBack()">Back</button>
+    </div>
+  </div>
+</div>

@@ -92,3 +92,12 @@ body,
 .bg-body {
     // background: linear-gradient(254deg, #fffbeb, #fefce8, #fef9c3);
 }
+
+.form-height {
+    height: 65vh;
+    overflow-y: auto;
+}
+
+button {
+    cursor: pointer !important;
+}

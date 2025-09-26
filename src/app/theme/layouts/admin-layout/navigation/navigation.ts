@@ -45,7 +45,7 @@ export const NavigationItems: NavigationItem[] = [
             title: 'Employee',
             type: 'item',
             classes: 'nav-item',
-            url: '/pages/employee',
+            url: '/pages/smart_table/1',
             icon: 'dashboard'
           },
         ]

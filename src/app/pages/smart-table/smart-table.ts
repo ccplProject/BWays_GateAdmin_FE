@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import moment from 'moment';
@@ -8,7 +9,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-smart-table',
   standalone: true,
-  imports: [GridModule,],
+  imports: [GridModule, CommonModule],
   templateUrl: './smart-table.html',
   styleUrl: './smart-table.scss',
 })
@@ -122,6 +123,7 @@ export class SmartTable {
     // let queryParams: any = {};
 
     this.queryParams["STATUS"] = "ADD";
+    this.queryParams["backUrl"] = "/pages/smart_table/" + this.MenuDocNo;
 
     if (!this.navigateUrl) return;
     this.router.navigate([this.navigateUrl], {
@@ -166,6 +168,7 @@ export class SmartTable {
     }
 
     this.queryParams["STATUS"] = "EDIT";
+    this.queryParams["backUrl"] = "/pages/smart_table/" + this.MenuDocNo
     this.queryParams["CODE"] = selectedRows[0].CODE;
     this.queryParams["TRAN_NO"] = selectedRows[0].TRAN_NO;
 
@@ -191,6 +194,7 @@ export class SmartTable {
     }
 
     this.queryParams["STATUS"] = "VIEW";
+    this.queryParams["backUrl"] = "/pages/smart_table/" + this.MenuDocNo
     this.queryParams["CODE"] = selectedRows[0].CODE;
     this.queryParams["TRAN_NO"] = selectedRows[0].TRAN_NO;
 
@@ -216,6 +220,7 @@ export class SmartTable {
     }
 
     this.queryParams["STATUS"] = "DEl";
+    this.queryParams["backUrl"] = "/pages/smart_table/" + this.MenuDocNo
     this.queryParams["CODE"] = selectedRows[0].CODE;
     this.queryParams["TRAN_NO"] = selectedRows[0].TRAN_NO;
 
