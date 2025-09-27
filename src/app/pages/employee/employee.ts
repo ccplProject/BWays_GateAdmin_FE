@@ -95,11 +95,11 @@ export class Employee {
     let MSTCOMMEMPLOYEE_TB: any = this.userForm.value;
     debugger
     if (this.queryParams.params.STATUS == "ADD") {
-
+      MSTCOMMEMPLOYEE_TB["PASSWORD"] = this.PASSWORD.value;
     } else {
       MSTCOMMEMPLOYEE_TB["CODE"] = this.queryParams.params.CODE
       if (this.PASSWORD?.value?.length > 0) {
-        MSTCOMMEMPLOYEE_TB["PASSWORD"] = this.PASSWORD;
+        MSTCOMMEMPLOYEE_TB["PASSWORD"] = this.PASSWORD.value;
       }
     }
     debugger
