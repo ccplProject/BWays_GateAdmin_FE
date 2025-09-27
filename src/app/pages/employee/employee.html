@@ -55,6 +55,23 @@
     </div>
     <hr>
     <div class="row m-0">
+      <div class="col col-12 col-md-6 mt-1">
+        <span class="d-flex justify-content-start align-items-center">
+          <input type="checkbox" class="form-check" formControlName="IS_WATCHMAN" /><label class="col-4 mt-2 fw-bold">Is
+            Watchman</label>
+        </span>
+      </div>
+      @if(IS_WATCHMAN.value == false){
+      <div class="col col-12 col-md-6 mt-1">
+        <span class="d-flex justify-content-start align-items-center">
+          <input type="checkbox" class="form-check" formControlName="VIEW_ALL_VISITOR" /><label
+            class="col-4 mt-2 fw-bold">Allow to view all visitors</label>
+        </span>
+      </div>
+      }
+    </div>
+    <hr>
+    <div class="row m-0">
       <div class="col col-12 col-md-6 mt-1 ">
         <label class="col-4 mt-2 fw-bold">User ID (<small class="text-success">Auto Generated</small>)</label>
         <input type="text" class="form-control form-control-sm" formControlName="USER_ID" placeholder="Enter user ID"
@@ -82,7 +99,7 @@
 
   <div class="row m-0 mt-3">
     <div class="col text-center">
-      <button *ngIf="queryParams.params.STATUS == 'ADD' || queryParams.params.STATUS == 'EDI'" type="button"
+      <button *ngIf="queryParams.params.STATUS == 'ADD' || queryParams.params.STATUS == 'EDIT'" type="button"
         class="btn btn-primary px-4" (click)="onSubmit()">Submit</button>
       <button type="button" class="btn btn-secondary px-4 ms-2" (click)="onBack()">Back</button>
     </div>

@@ -43,6 +43,8 @@ export class Employee {
       ADDRESS2: [''],
       USER_ID: ['', Validators.required],
       PASSWORD: ['', Validators.required],
+      IS_WATCHMAN: [false, Validators.required],
+      VIEW_ALL_VISITOR: [false, Validators.required],
     });
   }
 
@@ -77,6 +79,11 @@ export class Employee {
           ADDRESS2: this.dsExistingData?.[0]?.ADDRESS2,
           USER_ID: this.dsExistingData?.[0]?.USER_ID,
         });
+        if (this.dsExistingData?.[0]?.EMP_TYPE == 2) {
+          this.IS_WATCHMAN.setValue(true)
+        } else if (this.dsExistingData?.[0]?.EMP_TYPE == 1) {
+          this.VIEW_ALL_VISITOR.setValue(true)
+        }
       },
       error: (err: any) => {
         debugger
@@ -91,9 +98,22 @@ export class Employee {
 
     } else {
       MSTCOMMEMPLOYEE_TB["CODE"] = this.queryParams.params.CODE
+      if (this.PASSWORD?.value?.length > 0) {
+        MSTCOMMEMPLOYEE_TB["PASSWORD"] = this.PASSWORD;
+      }
     }
+    debugger
+    if (this.IS_WATCHMAN.value == true) {
+      MSTCOMMEMPLOYEE_TB["EMP_TYPE"] = 2;
+    } else {
+      if (this.VIEW_ALL_VISITOR.value == true) {
+        MSTCOMMEMPLOYEE_TB["EMP_TYPE"] = 1;
+      } else {
+        MSTCOMMEMPLOYEE_TB["EMP_TYPE"] = 0;
+      }
+    }
+    MSTCOMMEMPLOYEE_TB["STATUS_CODE"] = 0;
 
-    MSTCOMMEMPLOYEE_TB["CODE"]
     this.apiService.POST("api/saveMasterData", {
       MSTCOMMEMPLOYEE_TB: MSTCOMMEMPLOYEE_TB
     }).subscribe({
@@ -146,4 +166,6 @@ export class Employee {
   get ADDRESS2() { return this.userForm.get("ADDRESS2") };
   get USER_ID() { return this.userForm.get("USER_ID") };
   get PASSWORD() { return this.userForm.get("PASSWORD") };
+  get IS_WATCHMAN() { return this.userForm.get("IS_WATCHMAN") }
+  get VIEW_ALL_VISITOR() { return this.userForm.get("VIEW_ALL_VISITOR") }
 }
