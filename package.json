@@ -32,6 +32,8 @@
     "apexcharts": "4.7.0",
     "bootstrap": "5.3.7",
     "bootstrap-icons": "^1.13.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.3",
     "moment": "^2.30.1",
     "ng-apexcharts": "1.16.0",
     "ng-select": "^1.0.2",

@@ -48,6 +48,14 @@ export const NavigationItems: NavigationItem[] = [
             url: '/pages/smart_table/1',
             icon: 'dashboard'
           },
+          {
+            id: 'qr',
+            title: 'Print QR',
+            type: 'item',
+            classes: 'nav-item',
+            url: '/pages/print-qr',
+            icon: 'dashboard'
+          },
         ]
       },
     ]

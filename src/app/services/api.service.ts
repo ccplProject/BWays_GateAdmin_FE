@@ -23,5 +23,8 @@ export class ApiService {
   POST(url: string, data: any): Observable<any> {
     return this.http.post(this.baseUrl + url, data);
   }
+  GET(url: string): Observable<any> {
+    return this.http.get(this.baseUrl + url);
+  }
 
 }

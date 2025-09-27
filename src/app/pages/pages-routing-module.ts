@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'employee',
     loadComponent: () => import('./employee/employee').then((c) => c.Employee)
   },
+  {
+    path: 'print-qr',
+    loadComponent: () => import('./print-qr/print-qr').then((c) => c.PrintQr)
+  },
 
   { path: "**", component: NotFound404 }
 ];
