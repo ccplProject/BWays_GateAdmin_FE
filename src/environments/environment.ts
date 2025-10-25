@@ -9,7 +9,7 @@ export const environment = {
   production: false,
 
   /*******************************************************/
-  appName: "BWaysGet",
+  appName: "BWaysGate",
   showBrand: true,
   baseUrl: "http://localhost:5001/",
   token: "token",

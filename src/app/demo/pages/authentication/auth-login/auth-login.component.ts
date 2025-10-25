@@ -17,14 +17,18 @@ import Swal from 'sweetalert2';
 })
 export class AuthLoginComponent {
 
-  userId: string = "shubhamsawant.workplace@gmail.com";
-  password: string = "123456789";
+  userId: string = "";
+  password: string = "";
+
   showBrand: boolean = environment.showBrand;
   constructor(
     private apiService: ApiService,
     private router: Router
   ) {
-
+    if (!environment.production) {
+      this.userId = "shubhamsawant.workplace@gmail.com";
+      this.password = "123456789";
+    }
   }
 
   onLogin() {
