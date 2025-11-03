@@ -16,7 +16,12 @@
 
       <div class="col col-12 col-md-6 mt-1 ">
         <label class="col-4 fw-bold">Sex</label>
-        <ng-select [items]="dsSex" bindLabel="NAME" bindValue="CODE" formControlName="SEX" class="w-100"></ng-select>
+        <div class="d-flex gap-3">
+          <label *ngFor="let sex of dsSex" class="form-check-label d-flex align-items-center">
+            <input type="radio" class="form-check-input me-2" [value]="sex.CODE" formControlName="SEX" name="SEX" />
+            {{ sex.NAME }}
+          </label>
+        </div>
       </div>
     </div>
 
@@ -25,6 +30,11 @@
         <label class="col-4 mt-2 fw-bold">Short Name</label>
         <input type="text" class="form-control form-control-sm" formControlName="SHORT_NAME"
           placeholder="Enter short name" (focusout)="setUserId()" />
+      </div>
+      <div class="col col-12 col-md-6 mt-1 ">
+        <label class="col-4 mt-2 fw-bold">Deparment Name</label>
+        <ng-select [items]="dsDepartment" bindLabel="NAME" bindValue="CODE" formControlName="DEP_CODE"
+          [clearable]="false" class="w-100"></ng-select>
       </div>
     </div>
     <hr>
@@ -84,7 +94,7 @@
           formControlName="PASSWORD" placeholder="Enter password" />
 
         <!-- 👁 Toggle Icon -->
-        <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'" (click)="togglePassword()"
+        <i class="bi" [ngClass]="showPassword ? 'bi-eye' : 'bi-eye-slash'" (click)="togglePassword()"
           style="position: absolute; right: 1.5rem; cursor: pointer;"
           [ngStyle]="{ top: queryParams.params.STATUS == 'ADD' ? '58%' :'43%'  }"></i>
 

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { table } from 'console';
 import { ApiService } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
@@ -45,16 +46,33 @@ export class Employee {
       PASSWORD: ['', Validators.required],
       IS_WATCHMAN: [false, Validators.required],
       VIEW_ALL_VISITOR: [false, Validators.required],
+      DEP_CODE: ['', Validators.required],
     });
   }
-
+  dsDepartment: any[] = [];
   ngOnInit() {
-    if (this.queryParams.params.STATUS != "ADD") {
-      this.viewData();
-    }
-    if (this.queryParams.params.STATUS == "VIEW" || this.queryParams.params.STATUS == "DEL") {
-      this.userForm.disable();
-    }
+    this.apiService.getList({
+      table: "MSTCOMMDEPARTMENT",
+      view: ["*"],
+      condition: [{ STATUS_CODE: 0 }],
+      sort: [{ column: ["NAME"], order: "ASC" }]
+    }).subscribe({
+      next: (res: any) => {
+        this.dsDepartment = res;
+        this.userForm.patchValue({
+          DEP_CODE: this.dsDepartment?.[0]?.CODE
+        })
+        if (this.queryParams.params.STATUS != "ADD") {
+          this.viewData();
+        }
+        if (this.queryParams.params.STATUS == "VIEW" || this.queryParams.params.STATUS == "DEL") {
+          this.userForm.disable();
+        }
+      },
+      error: (err: any) => {
+        debugger;
+      }
+    })
   }
   dsExistingData: any[] = [];
   viewData() {
@@ -68,7 +86,6 @@ export class Employee {
     this.apiService.getList(postObj).subscribe({
       next: (res: any) => {
         this.dsExistingData = res;
-
         this.userForm.patchValue({
           NAME: this.dsExistingData?.[0]?.NAME,
           SEX: this.dsExistingData?.[0]?.SEX,
@@ -78,6 +95,7 @@ export class Employee {
           ADDRESS1: this.dsExistingData?.[0]?.ADDRESS1,
           ADDRESS2: this.dsExistingData?.[0]?.ADDRESS2,
           USER_ID: this.dsExistingData?.[0]?.USER_ID,
+          DEP_CODE : this.dsExistingData?.[0]?.DEP_CODE 
         });
         if (this.dsExistingData?.[0]?.EMP_TYPE == 2) {
           this.IS_WATCHMAN.setValue(true)

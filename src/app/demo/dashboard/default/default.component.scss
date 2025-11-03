@@ -1,31 +1,192 @@
-.card {
-  .card-body.dashboard-card {
-    padding: 18px;
-    padding-bottom: 20px;
+.dashboard-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+// Stats Cards
+.stats-card {
+  transition: transform 0.3s ease;
+  border: none;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .stats-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      font-size: 1.5rem;
+    }
+  }
+
+  .stats-info {
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    small {
+      font-size: 0.875rem;
+      i {
+        margin-right: 0.25rem;
+      }
+    }
   }
 }
 
-.user-group {
-  img {
-    position: relative;
-    width: 35px;
-    height: 35px;
+// Table Styles
+.table {
+  margin-bottom: 0;
+
+  th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    background: #f8f9fa;
+    padding: 0.75rem 1rem;
+  }
+
+  td {
+    padding: 1rem;
+    vertical-align: middle;
+  }
+
+  .visitor-avatar {
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    z-index: 2;
-    transition: all 0.1s ease-in-out;
-    border: 2px solid var(--bs-white);
-    + img {
-      margin-left: -14px;
-    }
-    &:hover {
-      z-index: 5;
-    }
+    background: #4680FF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
   }
 }
 
-.badge-circle {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+// Department Stats
+.dept-stat {
+  .dept-name {
+    font-weight: 500;
+  }
+
+  .dept-count {
+    color: #6c757d;
+  }
+
+  .progress {
+    border-radius: 10px;
+    background-color: #e9ecef;
+  }
+}
+
+// Quick Actions
+.quick-action-card {
+  text-decoration: none;
+  
+  .card {
+    transition: transform 0.3s ease;
+    border: none;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  .quick-action-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      font-size: 1.25rem;
+    }
+  }
+
+  h6 {
+    color: #333;
+  }
+}
+
+// Utility Classes
+.bg-light-primary {
+  background-color: rgba(70, 128, 255, 0.1);
+}
+
+.bg-light-success {
+  background-color: rgba(5, 163, 74, 0.1);
+}
+
+.bg-light-warning {
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.bg-light-info {
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.text-primary {
+  color: #4680FF !important;
+}
+
+.text-success {
+  color: #05a34a !important;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.text-info {
+  color: #2196f3 !important;
+}
+
+// Badge Styles
+.badge {
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 500;
+  border-radius: 30px;
+}
+
+// Responsive Adjustments
+@media (max-width: 768px) {
+  .dashboard-wrapper {
+    padding: 0.5rem;
+  }
+
+  .stats-card {
+    .stats-icon {
+      width: 40px;
+      height: 40px;
+      
+      i {
+        font-size: 1.25rem;
+      }
+    }
+
+    .stats-info {
+      h3 {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  .table {
+    th, td {
+      padding: 0.75rem;
+    }
+  }
 }

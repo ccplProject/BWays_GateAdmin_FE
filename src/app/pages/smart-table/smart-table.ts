@@ -62,7 +62,20 @@ export class SmartTable {
       this.gridColumns.push({ label: "Email", dataField: "EMAIL" });
       this.gridTranFieldList.push("EMAIL:string");
 
+    }else if (this.MenuDocNo == "2") {
+      postObj = {
+        table: "MSTCOMMDEPARTMENT",
+        view: ["*"],
+        condition: [{ STATUS_CODE: 0 }],
+        sort: [{ column: ["NAME"], order: "ASC" }]
+      };
+      this.gridColumns.push({ label: "Id", dataField: "CODE", width: 50 });
+      this.gridTranFieldList.push("CODE:string");
+
+      this.gridColumns.push({ label: "Name", dataField: "NAME" });
+      this.gridTranFieldList.push("NAME:string");
     }
+
     if (!postObj) {
       Swal.fire({
         icon: "error",
@@ -101,7 +114,7 @@ export class SmartTable {
         if (this.MenuDocNo == '1') {
           this.navigateUrl = '/pages/employee';
           this.queryParams["MENU_DOC_NO"] = 1;
-        } else {
+        } else if (this.MenuDocNo == '2') { this.navigateUrl = '/pages/department'; this.queryParams["MENU_DOC_NO"] = 2; } else {
           this.navigateUrl = undefined
           this.queryParams = undefined
         }

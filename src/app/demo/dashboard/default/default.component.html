@@ -1,22 +1,156 @@
-<div class="row">
-  @for (analytic of AnalyticEcommerce; track analytic) {
-  <div class="col-md-6 col-xl-3">
-    <app-card [showHeader]="false" blockClass="dashboard-card">
-      <h6 class="mb-2 f-w-400 text-muted">{{ analytic.title }}</h6>
-      <h4 class="mb-3">
-        {{ analytic.amount }}
-        <!-- <span class="badge {{ analytic.background }} border {{ analytic.border }} ">
-          <i antIcon type="{{ analytic.icon }}" theme="outline"></i>
-          {{ analytic.percentage }}
-        </span> -->
-      </h4>
-      <!-- <p class="mb-0 text-muted text-sm">
-        You made an extra
-        <span class="{{ analytic.color }}">{{ analytic.number }}</span>
-        this year
-      </p> -->
-    </app-card>
+<div class="dashboard-wrapper">
+
+  <!-- Dashboard Content -->
+  <div class="dashboard-content">
+    <!-- Stats Cards -->
+    <div class="row g-3 mb-4">
+      @for (card of summaryCards; track $index) {
+        <div class="col-sm-6 col-xl-3">
+          <div class="card stats-card">
+            <div class="card-body">
+              <div class="d-flex align-items-center">
+                <div class="stats-icon" [ngClass]="'bg-light-' + card.color">
+                  <i antIcon [type]="card.icon" theme="outline" [class]="'text-' + card.color"></i>
+                </div>
+                <div class="stats-info ms-3">
+                  <h3 class="mb-0">{{ card.count }}</h3>
+                  <p class="text-muted mb-0">{{ card.title }}</p>
+                  <small [class]="'text-' + card.color">
+                    <i antIcon type="rise" theme="outline"></i> {{ card.trend }}
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Recent Activity Section -->
+    <div class="row g-3">
+      <!-- Recent Visitors -->
+      <div class="col-12 col-xl-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Recent Visitors</h5>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th>Visitor</th>
+                    <th>Company</th>
+                    <th>Visit Time</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @if (!dashboardData?.recentVisitors?.length) {
+                    <tr>
+                      <td colspan="4" class="text-center">No recent visitors</td>
+                    </tr>
+                  }
+                  @for (visitor of dashboardData?.recentVisitors; track $index) {
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="visitor-avatar">{{ visitor.VISITOR_NAME.charAt(0) }}</div>
+                          <span class="ms-2">{{ visitor.VISITOR_NAME }}</span>
+                        </div>
+                      </td>
+                      <td>{{ visitor.COMPANY_NAME ?? '' }}</td>
+                      <td>{{ formatDate(visitor.GET_IN, visitor.TRAN_DATE) }}</td>
+                      <td>
+                        <span class="badge" [ngClass]="getStatusBadgeClass(visitor.STATUS)">
+                          {{ visitor.STATUS }}
+                        </span>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Employee Gate Passes -->
+      <div class="col-12 col-xl-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Recent Employee Gate Passes</h5>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th>Employee</th>
+                    <th>Work</th>
+                    <th>Out Time</th>
+                    <th>In Time</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @if (!dashboardData?.recentEmployeeGatePasses?.length) {
+                    <tr>
+                      <td colspan="5" class="text-center">No recent employee gate passes</td>
+                    </tr>
+                  }
+                  @for (empPass of dashboardData?.recentEmployeeGatePasses; track $index) {
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="visitor-avatar">{{ empPass.EMP_NAME.charAt(0) }}</div>
+                          <span class="ms-2">{{ empPass.EMP_NAME }}</span>
+                        </div>
+                      </td>
+                      <td>{{ empPass.WORK }}</td>
+                      <td>{{ empPass.OUT_TIME }}</td>
+                      <td>{{ empPass.IN_TIME }}</td>
+                      <td>
+                        <span class="badge" [ngClass]="getStatusBadgeClass(empPass.STATUS)">
+                          {{ empPass.STATUS }}
+                        </span>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Department Stats -->
+    <div class="row g-3 mt-3">
+      <div class="col-12 col-xl-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Department's Visit Statistics</h5>
+          </div>
+          <div class="card-body">
+            @if (!dashboardData?.visitorsByDepartment?.length) {
+              <p class="text-center mb-0">No department data available</p>
+            }
+            @for (dept of dashboardData?.visitorsByDepartment; track $index) {
+              <div class="dept-stat mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="dept-name">{{ dept.DEPARTMENT }}</span>
+                  <span class="dept-count">{{ dept.COUNT }} visitors</span>
+                </div>
+                <div class="progress" style="height: 6px;">
+                  <div class="progress-bar bg-primary" role="progressbar"
+                       [style.width.%]="getDepartmentPercentage(dept.COUNT)"
+                       aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  }
-  <!-- [ sample-page ] end -->
 </div>
