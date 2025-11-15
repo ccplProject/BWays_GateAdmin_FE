@@ -11,7 +11,7 @@ export const environment = {
   /*******************************************************/
   appName: "BWaysGate",
   showBrand: true,
-  baseUrl: "http://localhost:5001/",
+  baseUrl: "http://192.168.1.207:5001/",
   token: "token",
   key: "key",
   userData: "userData",
