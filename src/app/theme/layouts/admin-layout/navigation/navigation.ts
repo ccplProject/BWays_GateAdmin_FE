@@ -66,6 +66,32 @@ export const NavigationItems: NavigationItem[] = [
           },
         ]
       },
+       
+      {
+        id: 'report',
+        title: 'Report',
+        type: 'collapse',
+        classes: 'nav-item',
+        icon: 'dashboard', 
+        children: [
+          {
+            id: 'visitor-report',
+            title: 'Visitor Report',
+            type: 'item',
+            classes: 'nav-item',
+            url: '/pages/report/visitor-report', 
+            icon: 'dashboard'
+          },
+          {
+            id: 'employee-report',
+            title: 'Employee Report',
+            type: 'item',
+            classes: 'nav-item',
+            url: '/pages/report/employee-report',
+            icon: 'dashboard'
+          }
+        ]
+      }      
     ]
   },
 ];

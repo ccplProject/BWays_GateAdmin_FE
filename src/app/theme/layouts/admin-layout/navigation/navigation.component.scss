@@ -1,1 +1,21 @@
 // This file is intentionally left empty to allow customers to add custom CSS if needed.
+.logo-img {
+  max-width: 150px;  
+  width: 100%;       
+  height: auto;  
+    margin-top: 15px;   
+}
+
+@media screen and (max-width: 992px) {
+  .logo-img {
+    max-width: 130px; 
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .logo-img {
+    max-width: 110px;
+    margin: 5px auto;   
+  }
+}

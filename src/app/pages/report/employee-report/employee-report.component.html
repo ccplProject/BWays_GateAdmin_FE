@@ -1,0 +1,86 @@
+<div class="visitor-report container-fluid p-4">
+  <div class="card shadow-lg border-0 rounded-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">Employee Report</h4>
+      <button class="btn btn-success" (click)="exportToExcel()">
+        <i class="fas fa-file-excel me-2"></i> Export to Excel
+      </button>
+    </div>
+
+    <div class="card-body">
+      <div class="row mb-3">
+        
+       
+        <div class="col-md-4">
+          <label>Start Date</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="dd-mm-yyyy"
+            bsDatepicker
+            [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-green' }"
+            [(ngModel)]="startDate">
+        </div>
+        <div class="col-md-4">
+          <label>End Date</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="dd-mm-yyyy"
+            bsDatepicker
+            [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-green' }"
+            [(ngModel)]="endDate">
+        </div>
+       
+
+        <div class="col-md-4 d-flex align-items-end">
+          <button class="btn btn-primary w-100" (click)="applyFilter()">
+            <i class="fas fa-search me-2"></i> Apply Filter
+          </button>
+        </div>
+      </div>
+
+    
+      <div class="status-buttons mb-4 text-center">
+        <button class="btn mx-1" [ngClass]="{'active': activeStatus === 'All'}" (click)="filterByStatus('All')">All</button>
+        <button class="btn mx-1" [ngClass]="{'active': activeStatus === 'Waiting Approval'}" (click)="filterByStatus('Waiting Approval')">Waiting Approval</button>
+        <button class="btn mx-1" [ngClass]="{'active': activeStatus === 'Approval'}" (click)="filterByStatus('Approval')">Approval</button>
+        <button class="btn mx-1" [ngClass]="{'active': activeStatus === 'Completed'}" (click)="filterByStatus('Completed')">Completed</button>
+        <button class="btn mx-1" [ngClass]="{'active': activeStatus === 'Rejected'}" (click)="filterByStatus('Rejected')">Rejected</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle text-center">
+          <thead class="table-grey">
+            <tr>
+              <th>#</th>
+              <th>Employee Name</th>
+              <th>Contact</th>
+              <th>Meeting With</th>
+              <th>Purpose</th>
+              <th>Check-In</th>
+              <th>Check-Out</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of filteredEmployees; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ employee.name }}</td>
+              <td>{{ employee.contact }}</td>
+              <td>{{ employee.meetingWith }}</td>
+              <td>{{ employee.purpose }}</td>
+              <td>{{ employee.checkIn | date:'medium' }}</td>
+              <td>{{ employee.checkOut ? (employee.checkOut | date:'medium') : '-' }}</td>
+              <td><span [class]="getStatusClass(employee.status)">{{ employee.status }}</span></td>
+            </tr>
+            <tr *ngIf="filteredEmployees.length === 0">
+              <td colspan="8" class="text-center text-muted py-3">No data available for the selected dates.</td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

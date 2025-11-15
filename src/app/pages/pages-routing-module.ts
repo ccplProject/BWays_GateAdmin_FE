@@ -21,8 +21,24 @@ const routes: Routes = [
     path: 'print-qr',
     loadComponent: () => import('./print-qr/print-qr').then((c) => c.PrintQr)
   },
-{path : "department", loadComponent: () => import("./department/department").then((c) => c.Department)},
-  { path: "**", component: NotFound404 }
+  {
+    path: 'department',
+    loadComponent: () => import('./department/department').then((c) => c.Department)
+  },
+  {
+    path: 'report/visitor-report',
+    loadComponent: () => import('./report/visitor-report/visitor-report.component')
+      .then(c => c.VisitorReportComponent)
+  },
+  {
+    path: 'report/employee-report',
+  loadComponent: () =>
+    import('./report/employee-report/employee-report.component')
+      .then(c => c.EmployeeReportComponent)
+},
+
+
+  { path: '**', component: NotFound404 }
 ];
 
 @NgModule({
